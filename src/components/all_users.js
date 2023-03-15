@@ -108,7 +108,7 @@ function Users() {
 
         const sheetData = [
             ['First Name', 'Middle Name', 'Last Name', 'Gender', 'Date of Birth', 'Email', 'Phone', 'Address', 'Bank Name', 'Account Number', 'Account Name'],
-            ...selectedData.map((d) => [d.firstName, d.middleName, d.lastName, d.gender, d.dob, d.email, d.phone, d.address, d.bankName, d.accountNumber, d.accountName]),
+            ...selectedData.map((d) => [d.fname, d.mname, d.lname, d.gender, d.dob, d.email, d.phone, d.address, d.bank_name, d.account_number, d.account_name]),
         ];
 
         const sheetName = 'Purple Data';
