@@ -2,6 +2,8 @@
 import '../App.css';
 import { useState } from 'react';
 import createUser from '../fauna/createUser';
+// import { toast } from 'material-react-toastify';
+import { sendMail } from '../services/sendMail';
 
 function Registration() {
   const [alertMessage, setAlertMessage] = useState({
@@ -34,6 +36,8 @@ function Registration() {
   const saveInfo = async () => {
 
     if (!formState.fname) {
+      // toast.error('Please fill all fields')
+      alert('Please fill all fields')
       setAlertMessage({
         type: 'danger',
         message: 'Please fill all fields'
@@ -49,7 +53,10 @@ function Registration() {
     const result = await createUser(data);
 
     if (result.ts) {
-
+      sendMail({
+        email: formState.email,
+        name: formState.fname + " " + formState.lname,
+      })
         updateFormState({ 
             fname: '',
             mname: '',
@@ -63,9 +70,16 @@ function Registration() {
             account_number: '',
         });
 
+       
       setAlertMessage({ type: 'success', message: 'Registration successful' });
+
+      alert('Registration successful')
+      // toast.success('Registration successful')
+
     } else {
       setAlertMessage({ type: 'danger', message: 'Registration failed' });
+      alert('Registration failed, please try again')
+      // toast.error('Registration failed')
     }
 
   }
