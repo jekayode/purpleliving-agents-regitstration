@@ -240,7 +240,7 @@ input,
 input::placeholder {
     font: 15px/3 sans-serif !important;
     color: #282c3445 !important;
-    text-transform: lowercase !important;
+    /* text-transform: lowercase !important; */
 }
 
 h5{

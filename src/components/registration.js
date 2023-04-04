@@ -50,26 +50,22 @@ function Registration() {
     }
 
     const result = await createUser(data);
-
+    const notifyUser = await sendMail(data);
+    console.log(notifyUser);
     if (result.ts) {
-      sendMail({
-        email: formState.email,
-        name: formState.fname + " " + formState.lname,
-      })
-        updateFormState({ 
-            fname: '',
-            mname: '',
-            lname: '',
-            dob: '',
-            email: '',
-            phone: '',
-            address: '',
-            bank_name: '',
-            account_name: '',
-            account_number: '',
-        });
-
-       
+        // updateFormState({ 
+        //     fname: '',
+        //     mname: '',
+        //     lname: '',
+        //     dob: '',
+        //     email: '',
+        //     phone: '',
+        //     address: '',
+        //     bank_name: '',
+        //     account_name: '',
+        //     account_number: '',
+        // });
+      
       setAlertMessage({ type: 'success', message: 'Registration successful' });
 
       alert('Registration successful')
