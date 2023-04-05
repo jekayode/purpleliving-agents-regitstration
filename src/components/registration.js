@@ -5,6 +5,7 @@ import createUser from '../fauna/createUser';
 // import { toast } from 'material-react-toastify';
 import { sendMail } from '../services/sendMail';
 
+
 function Registration() {
   const [alertMessage, setAlertMessage] = useState({
     type: '',
@@ -50,8 +51,8 @@ function Registration() {
     }
 
     const result = await createUser(data);
-    const notifyUser = await sendMail(data);
-    console.log(notifyUser);
+    const notifyUser = await sendMail(data.email, data.fname + ' ' + data.lname);
+
     if (result.ts) {
         // updateFormState({ 
         //     fname: '',
