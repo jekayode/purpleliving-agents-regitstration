@@ -12,6 +12,7 @@ const App = () => {
       <Router>
             <Routes>
 						<Route path="/" element={<Registration/>} />
+						<Route path="/referral/:ref_code" element={<Registration/>} />
 						<Route path="/users" element={<Users/>} />
             </Routes>
 				</Router>

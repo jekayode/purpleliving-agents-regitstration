@@ -1,16 +1,20 @@
 
 import '../App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import createUser from '../fauna/createUser';
 // import { toast } from 'material-react-toastify';
 import { sendMail } from '../services/sendMail';
+import { useParams } from "react-router-dom";
 
 
 function Registration() {
+  const { ref_code } = useParams();
+
   const [alertMessage, setAlertMessage] = useState({
     type: '',
     message: ''
   });
+  
   const [formState, updateFormState] = useState({
     fname: '',
     mname: '',
@@ -18,14 +22,13 @@ function Registration() {
     gender: '',
     dob: '',
     email: '',
-    referred_code: '',
+    referred_code: ref_code ? ref_code : '' ,
     phone: '',
     address: '',
     bank_name: '',
     account_name: '',
     account_number: '',
   });
-
 
   const updateForm = e => {
     const { value, name } = e.target;
@@ -45,6 +48,10 @@ function Registration() {
         message: 'Please fill all fields'
       });
       return;
+    }  
+
+    if(ref_code) {
+      formState.referred_code = ref_code;
     }
 
     const referral_code = (Math.random() + 1).toString(36).substring(5);
