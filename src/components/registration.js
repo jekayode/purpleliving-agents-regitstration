@@ -172,7 +172,7 @@ function Registration() {
               <label>Account Number:</label>
               <input type="text" value={formState.account_number} onChange={updateForm} placeholder="Enter Account Number Here.." class="form-control" name="account_number" required />
             </div>
-            <button  onClick={saveInfo} name="register-form" class="btn btn-md btn-success">Submit</button>
+            <button  onClick={saveInfo} name="register-form" class="btn btn-md btn-purple">Submit</button>
 
 
           </div>
