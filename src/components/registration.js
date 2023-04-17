@@ -18,6 +18,7 @@ function Registration() {
     gender: '',
     dob: '',
     email: '',
+    referred_code: '',
     phone: '',
     address: '',
     bank_name: '',
@@ -46,12 +47,14 @@ function Registration() {
       return;
     }
 
+    const referral_code = (Math.random() + 1).toString(36).substring(5);
+
     const data = {
       ...formState,
+      referral_code
     }
 
     const result = await createUser(data);
-    const notifyUser = await sendMail(data.email, data.fname + ' ' + data.lname);
 
     if (result.ts) {
         // updateFormState({ 
@@ -68,7 +71,7 @@ function Registration() {
         // });
       
       setAlertMessage({ type: 'success', message: 'Registration successful' });
-
+      await sendMail(data.email, data.fname + ' ' + data.lname, referral_code);
       alert('Registration successful')
       // toast.success('Registration successful')
 
@@ -91,7 +94,6 @@ function Registration() {
       message: ''
     });
   }
-
 
   // console.log(formState);
 
@@ -172,8 +174,13 @@ function Registration() {
               <label>Account Number:</label>
               <input type="text" value={formState.account_number} onChange={updateForm} placeholder="Enter Account Number Here.." class="form-control" name="account_number" required />
             </div>
-            <button  onClick={saveInfo} name="register-form" class="btn btn-md btn-purple">Submit</button>
 
+            <div class="form-group">
+              <label>Referral Code: (Add referral code of who referred you)</label>
+              <input type="text" value={formState.referred_code} onChange={updateForm} placeholder="Enter referral code" class="form-control" name="referred_code" />
+            </div>
+
+            <button  onClick={saveInfo} name="register-form" class="btn btn-md btn-purple">Submit</button>
 
           </div>
           <p>&nbsp;</p>
