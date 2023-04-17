@@ -16,7 +16,7 @@ const createUser = async (user) => {
 
     const userData = {
         ...user,
-        referred_by: userQuery.email
+        referred_by: userQuery?.email ? userQuery?.email : ''
     }
 
     const createUser = client.query(
