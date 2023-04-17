@@ -2,7 +2,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Registration from './components/registration';
 import Users from './components/all_users';
-
+import 'material-react-toastify/dist/ReactToastify.css';
+// import { ToastContainer } from 'material-react-toastify';
 
 const App = () => {
   return (
