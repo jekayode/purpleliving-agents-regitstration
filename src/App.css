@@ -224,7 +224,7 @@ a:hover, a:visited, a:link {
   pointer-events: none !important;
 }
 
-input{
+input, select{
   border: none !important;
   border-bottom: 1px solid purple !important;
   outline: none !important;
@@ -236,7 +236,7 @@ input{
   margin: 0px !important;
 }
 
-input,
+input, select,
 input::placeholder {
     font: 15px/3 sans-serif !important;
     color: #282c3445 !important;
@@ -251,4 +251,10 @@ h5{
   margin: 0px !important;
   text-decoration: underline ;
   text-decoration-color: purple;
+}
+
+.btn-purple{
+  color: #fff !important;
+  background-color: purple;
+  border: none !important;
 }
